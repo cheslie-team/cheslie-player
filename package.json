@@ -4,6 +4,7 @@
   "description": "Chess client",
   "main": "player.js",
   "scripts": {
+    "start": "node player.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/cheslie-team/cheslie-player#readme",
   "dependencies": {
+    "chess.js": "^0.10.2",
     "socket.io-client": "^1.7.3"
   }
 }
