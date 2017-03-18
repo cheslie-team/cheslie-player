@@ -1,0 +1,22 @@
+{
+  "name": "cheslie-player",
+  "version": "1.0.0",
+  "description": "Chess client",
+  "main": "player.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cheslie-team/cheslie-player.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cheslie-team/cheslie-player/issues"
+  },
+  "homepage": "https://github.com/cheslie-team/cheslie-player#readme",
+  "dependencies": {
+    "socket.io-client": "^1.7.3"
+  }
+}
