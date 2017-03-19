@@ -1,11 +1,13 @@
-var game = require('socket.io-client')('http://localhost:3000'),
-    lobby = require('socket.io-client')('http://localhost:3030'),
+var io = require('socket.io-client')
+    game = io('http://localhost:3000'),
+    lobby = io('http://localhost:3030'),
     Chess = require('chess.js').Chess,
 
     name = 'RndJesus_' + Math.floor(Math.random() * 100);;
 
 lobby.on('connect', function () {
     console.log('Player ' + name + ' is connected to lobby');
+    lobby.emit('enter', name);
 });
 
 lobby.on('join', function (gameId) {
@@ -15,7 +17,6 @@ lobby.on('join', function (gameId) {
 
 game.on('connect', function () {
     console.log('Player ' + name + ' is connected to game');
-    //game.emit('join', 'test_game');
 });
 
 game.on('move', function (gameState) {
