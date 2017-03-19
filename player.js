@@ -29,5 +29,7 @@ game.on('move', function (gameState) {
     console.log(move);
     gameState.move = move;
 
-    game.emit('move', gameState);
+    setTimeout(function () {
+        game.emit('move', gameState);
+    }, 100);
 });
