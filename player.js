@@ -1,5 +1,5 @@
-var game = require('socket.io-client')('http://192.168.0.24:3000'),
-    lobby = require('socket.io-client')('http://192.168.0.24:3030'),
+var game = require('socket.io-client')('http://localhost:3000'),
+    lobby = require('socket.io-client')('http://localhost:3030'),
     Chess = require('chess.js').Chess,
 
     name = 'RndJesus_' + Math.floor(Math.random() * 100);;
