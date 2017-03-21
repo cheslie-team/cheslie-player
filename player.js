@@ -1,5 +1,5 @@
 var io = require('socket.io-client'),
-    ai = require('ai.js'),
+    ai = require('./ai.js'),
     game = io('http://localhost:3000'),
     lobby = io('http://localhost:3030'),
     name = 'RndJesus_' + Math.floor(Math.random() * 100);
