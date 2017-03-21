@@ -1,9 +1,8 @@
-var io = require('socket.io-client')
+var io = require('socket.io-client'),
+    ai = require('ai.js'),
     game = io('http://localhost:3000'),
     lobby = io('http://localhost:3030'),
-    Chess = require('chess.js').Chess,
-
-    name = 'RndJesus_' + Math.floor(Math.random() * 100);;
+    name = 'RndJesus_' + Math.floor(Math.random() * 100);
 
 lobby.on('connect', function () {
     console.log('Player ' + name + ' is connected to lobby');
@@ -20,15 +19,7 @@ game.on('connect', function () {
 });
 
 game.on('move', function (gameState) {
-    var chess = new Chess();
-    chess.load(gameState.board);
- 
-    var moves = chess.moves(),
-        move = moves[Math.floor(Math.random() * moves.length)];
-
-    console.log(move);
-    gameState.move = move;
-
+    gameState.move = ai.bestMove(gameState.board);
     setTimeout(function () {
         game.emit('move', gameState);
     }, 100);
