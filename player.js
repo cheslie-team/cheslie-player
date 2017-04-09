@@ -1,8 +1,9 @@
-var io = require('socket.io-client'),
+var config = require('cheslie-config'),
+    io = require('socket.io-client'),
     ai = require('./ai.js'),
-    game = io('http://localhost:3000'),
-    lobby = io('http://localhost:8080'),
-    name = 'RndJesus_' + Math.floor(Math.random() * 100);
+    game = io(config.game.url),
+    lobby = io(config.lobby.url),
+    name = 'Tardis_' + Math.floor(Math.random() * 100);
 
 lobby.on('connect', function () {
     console.log('Player ' + name + ' is connected to lobby');

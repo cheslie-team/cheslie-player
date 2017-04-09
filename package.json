@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/cheslie-team/cheslie-player#readme",
   "dependencies": {
+    "cheslie-config": "^1.0.3",
     "chess.js": "^0.10.2",
     "socket.io-client": "^1.7.3"
   }
