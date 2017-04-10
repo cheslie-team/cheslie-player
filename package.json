@@ -4,7 +4,8 @@
   "description": "Chess client",
   "main": "player.js",
   "scripts": {
-    "start": "node player.js",
+    "start": "NODE_ENV=production node player.js",
+    "dev": "node player.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

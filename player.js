@@ -20,8 +20,10 @@ game.on('connect', function () {
 });
 
 game.on('move', function (gameState) {
-    gameState.move = ai.bestMove(gameState.board);
-    setTimeout(function () {
-        game.emit('move', gameState);
-    }, 100);
+    ai.move(gameState.board, function (move) {
+        gameState.move = move;
+        setTimeout(function () {
+            game.emit('move', gameState);
+        }, 100);
+    });
 });
