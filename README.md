@@ -1,2 +1,10 @@
-# cheslie-player
-Chess clients
+cheslie-player
+==============
+
+Usage
+-----
+
+```
+npm run play-random
+```
+
