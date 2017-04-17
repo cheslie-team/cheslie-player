@@ -39,8 +39,8 @@ var getEndgameMove = function (board, doMove, fail) {
     });
 };
 
-exports.move = function (board, doMove) {
+exports.move = function (board, doMove, fail) {
     setTimeout(function() {
-        getEndgameMove(board, doMove)
+        getEndgameMove(board, doMove, fail);
     }, 1000);
 };

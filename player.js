@@ -3,7 +3,7 @@ var config = require('cheslie-config'),
     ai = require('./ai.js'),
     game = io(config.game.url),
     lobby = io(config.lobby.url),
-    name = 'Tardis_' + Math.floor(Math.random() * 100);
+    name = ai.name;
 
 lobby.on('connect', function () {
     console.log('Player ' + name + ' is connected to lobby');

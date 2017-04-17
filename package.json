@@ -5,8 +5,8 @@
   "main": "player.js",
   "scripts": {
     "start": "NODE_ENV=production node player.js",
-    "dev": "node player.js",
-    "play-random": "node scripts/play-random.js"
+    "test": "node scripts/play-random.js",
+    "dev": "node player.js"
   },
   "repository": {
     "type": "git",
