@@ -1,4 +1,4 @@
-var Chess = require('chess.js').Chess;
+var Chess = require('../modules/chess-extended.js').Chess;
 
 exports.move = function (board, doMove) {
     var chess = new Chess(board),

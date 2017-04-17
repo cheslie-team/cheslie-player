@@ -1,4 +1,4 @@
-var Chess = require('chess.js').Chess,
+var Chess = require('../modules/chess-extended.js').Chess,
 	minmax = require('../modules/minmax.js');
 
 exports.move = function (board, doMove) {

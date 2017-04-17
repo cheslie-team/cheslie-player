@@ -95,16 +95,48 @@ Have a look at the chess.js readme for more information about what chess.js can 
 
 In addition some extentions are prepared as part of cheslie-player:
 
-__.pieces()__
+__.pieces([optional: color])__
 
-Get all pieces on the current board.
+Get all pieces on the current board. Accepts an optional color-argument, that can be used to get just the white (`'w'`) or black (`'b'`) pieces.
 
-__.number_of_pieces()__
+__.number_of_pieces([optional: color])__
 
-Get the number of pieces on the board.
+Get the number of pieces on the board. As for `.pieces()` an otional color argument is accepted.
 
 
 `/modules/chess-extended.js` contains all the extentions.
+
+
+__.moves_informaton()__
+
+Get all available moves and information of what kind of move this is. Internally `.moves_information()` uses `.moves({ verbose: true })`, so se the chess.js documentation for more information as well.
+
+```
+.moves_informaton()
+chess.moves({ verbose: true });
+// -> [{ color: 'w', from: 'a2', to: 'a3',
+//       flags: 'n', piece: 'p', san 'a3'
+//       # a captured: key is included when the move is a capture
+//       # a promotion: key is included when the move is a promotion
+//     },
+//     ...
+//     ]
+```
+
+The piece, captured, and promotion fields contain the lowercase representation of the applicable piece.
+
+The flags field in verbose mode may contain one or more of the following values:
+
+* 'n' - a non-capture
+* 'b' - a pawn push of two squares
+* 'e' - an en passant capture
+* 'c' - a standard capture
+* 'p' - a promotion
+* 'k' - kingside castling
+* 'q' - queenside castling
+
+A flag of 'pc' would mean that a pawn captured a piece on the 8th rank and promoted.
+
 
 
 Sample players and Modules
