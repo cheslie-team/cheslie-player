@@ -26,7 +26,7 @@ The repo is set up so that all engine writing can be done in the `ai.js` file. I
 
 __Testing your player__
 
-You can test your chess player by runnin the command `npm test`. This will play a chess game where your player faces an opponent making random moves.
+You can test your chess player by runnin the command `npm test` (or `npm run start-win` if you're using windows). This will play a chess game where your player faces an opponent making random moves.
 All moves and positions are printed to the console as shown in the sample listing below.
 
 ```
