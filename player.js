@@ -12,7 +12,7 @@ lobby.on('connect', function () {
 
 lobby.on('join', function (gameId) {
     console.log('Player is joining game: ' + gameId);
-    game.emit('join', gameId);
+    game.emit('join', gameId, name);
 });
 
 game.on('connect', function () {
