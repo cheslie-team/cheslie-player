@@ -1,4 +1,4 @@
-var Chess = require('chess.js').Chess;
+var Chess = require('./chess-extended.js').Chess;
 
 var minOrMax = function (a, b, maximizing) {
 	if (maximizing && a.score > b.score) {
