@@ -5,7 +5,8 @@
   "main": "player.js",
   "scripts": {
     "start": "NODE_ENV=production node player.js",
-    "test": "node scripts/play-random.js",
+    "test": "mocha test",
+    "play": "node scripts/play-random.js",
     "dev": "node player.js",
     "start-win": "set NODE_ENV=production& node player.js"
   },
@@ -20,8 +21,10 @@
   },
   "homepage": "https://github.com/cheslie-team/cheslie-player#readme",
   "dependencies": {
+    "chai": "^3.5.0",
     "cheslie-config": "^1.0.3",
     "chess.js": "^0.10.2",
+    "mocha": "^3.2.0",
     "socket.io-client": "^1.7.3"
   }
 }
