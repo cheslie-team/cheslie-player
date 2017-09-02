@@ -58,8 +58,8 @@ var minmax = function (fen, score, depth) {
 	return minmaxAlphaBeta(fen, depth, {alpha: Number.NEGATIVE_INFINITY, beta: Number.POSITIVE_INFINITY}, true, score, null);
 };
 
-exports.move = function (board, doMove, score, depth) {
-	doMove(minmax(board, score, depth).move);
+exports.move = function (board, depth, score) {
+	return minmax(board, score, depth).move;
 };
 
 /* should select Qh6+ as best move

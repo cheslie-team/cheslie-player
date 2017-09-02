@@ -5,5 +5,5 @@ exports.move = function (board, doMove) {
     	moves = chess.moves(),
     	move = moves[Math.floor(Math.random() * moves.length)];
 
-    doMove(move);
+    return move;
 };

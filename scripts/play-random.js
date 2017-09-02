@@ -60,12 +60,11 @@ var play = function (chess, white, black) {
 
     var board = chess.fen(),
         player = chess.turn() === 'w' ? white : black;
+        move = player.move(board);
 
-    player.move(board, function (move) {
-        chess.move(move);
-        console.log(unicode(chess.ascii() + '\n\r K = White, k = ') + 'Black');
-        play(chess, white, black);
-    });
+    chess.move(move);
+    console.log(unicode(chess.ascii() + '\n\r K = White, k = ') + 'Black');
+    play(chess, white, black);
 };
 
 play(chess, white, black);

@@ -20,10 +20,9 @@ game.on('connect', function () {
 });
 
 game.on('move', function (gameState) {
-    ai.move(gameState.board, function (move) {
-        gameState.move = move;
-        setTimeout(function () {
-            game.emit('move', gameState);
-        }, 100);
-    });
+    gameState.move = ai.move(gameState.board);
+
+    setTimeout(function () {
+        game.emit('move', gameState);
+    }, 100);
 });

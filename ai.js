@@ -7,10 +7,10 @@ var Chess = require('./modules/chess-extended.js').Chess;
 exports.name = 'Tørrfisk - ' + Math.floor(Math.random() * 1000);
 
 // rnd-jesus.js
-exports.move = function (board, doMove) {
+exports.move = function (board) {
     var chess = new Chess(board),
         moves = chess.moves(),
         move = moves[Math.floor(Math.random() * moves.length)];
 
-    doMove(move);
+    return move;
 };

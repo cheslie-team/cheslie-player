@@ -147,6 +147,6 @@ A flag of 'pc' would mean that a pawn captured a piece on the 8th rank and promo
 Sample players and Modules
 --------------------------
 
-Some sample players are available in the `/sample-players` folder. All support the `.move(board, doMove)` construct, so you can use them directly in your own ai.js code.
+Some sample players are available in the `/sample-players` folder. All support the `.move(board)` construct, so you can use them directly in your own ai.js code.
 
 The sample players use different modules pre-prepared for easy chess-engine development. They are located under the `/modules` folder.
