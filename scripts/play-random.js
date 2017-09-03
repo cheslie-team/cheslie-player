@@ -1,7 +1,7 @@
 var Chess = require('chess.js').Chess,
     white = require('../ai.js'),
-    black = require('../sample-players/rnd-jesus.js'),
-    // black = require('../sample-players/endgamer.js'),
+    // black = require('../sample-players/rnd-jesus.js'),
+    black = require('../sample-players/endgamer.js'),
     // black = require('../sample-players/minmaxer.js'),
     chess = new Chess(),
 
@@ -52,6 +52,15 @@ var reason = function (chess) {
     return 'Draw since the game lasted over 100 moves';
 };
 
+var doMove = function (chess, white, black, move) {
+    chess.move(move);
+    console.log(unicode(chess.ascii() + '\n\r K = White, k = ') + 'Black');
+    
+    setTimeout(function () {
+        play(chess, white, black);
+    }, 10);
+};
+
 var play = function (chess, white, black) {
     if (chess.game_over()) {
         console.log(reason(chess));
@@ -62,9 +71,16 @@ var play = function (chess, white, black) {
         player = chess.turn() === 'w' ? white : black;
         move = player.move(board);
 
-    chess.move(move);
-    console.log(unicode(chess.ascii() + '\n\r K = White, k = ') + 'Black');
-    play(chess, white, black);
+    if (typeof move === "string") {
+        doMove(chess, white, black, move);
+    } else {
+        move.then(function (move) {
+            doMove(chess, white, black, move);
+        }).catch(function (err) {
+            console.log(err.error);
+            doMove(chess, white, black, err.move);
+        });        
+    }    
 };
 
 play(chess, white, black);

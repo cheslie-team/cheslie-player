@@ -19,10 +19,21 @@ game.on('connect', function () {
     console.log('Player ' + name + ' is connected to game');
 });
 
-game.on('move', function (gameState) {
-    gameState.move = ai.move(gameState.board);
+var emitMove = function (gameState, move) {
+    gameState.move = move;
+    game.emit('move', gameState);
+};
 
-    setTimeout(function () {
-        game.emit('move', gameState);
-    }, 100);
+game.on('move', function (gameState) {
+    var move = ai.move(gameState.board);
+    if (typeof move === "string") {
+        emitMove(gameState, move);
+    } else {
+        move.then(function (move) {
+            emitMove(gameState, move);
+        }).catch(function (err) {
+            console.log(err.error);
+            emitMove(gameState, err.move);
+        });        
+    }
 });

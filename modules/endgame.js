@@ -2,45 +2,69 @@ var Chess = require('chess.js').Chess,
     https = require('https'),
     querystring = require('querystring');
 
-var getEndgameMove = function (board, doMove, fail) {
+var getEndgameMove = function (board) {
     var query = querystring.stringify({fen: board}),
-        path = '/api/v2?' + query,
+        path = '/v1/syzygy?' + query,
         moves = new Chess(board).moves({verbose: true});
 
-    https.get({
-        host: 'syzygy-tables.info',
-        path: path
-    }, function(response) {
-        if (response.statusCode !== 200) {
-            fail(response);
-        }
-
-        var body = '';
-        response.on('data', function(d) {
-            body += d;
-        });
-
-        response.on('end', function() {
-            var parsed = JSON.parse(body);
-            if (!parsed.bestmove) {
-                fail(parsed);
-                return;
+    return new Promise(function(resolve, reject) {
+        https.get({
+            host: 'cheslie-endgame.azurewebsites.net',
+            path: path
+        }, function(response) {
+            if (response.statusCode < 200 || response.statusCode > 299) {
+                reject(new Error('Failed to load page, status code: ' + response.statusCode));
             }
 
-            var move = moves.find(function (move) {
-                return parsed.bestmove.includes(move.from) && parsed.bestmove.includes(move.to);
+            var body = '';
+            response.on('data', function(data) {
+                body += data;
             });
-            if (move) {
-                doMove(move.san);
-            } else {
-                fail(parsed);
-            }
+
+            response.on('end', function() {
+                var parsed = JSON.parse(body);
+                if (parsed.bestMove) {
+                    var move = moves.find(function (move) {
+                        return parsed.bestMove === move.from + move.to;
+                    });
+                    if (move) {
+                        resolve(move.san);
+                    }
+                } else {
+                    reject({
+                        error: err,
+                        move: moves[Math.floor(Math.random() * moves.length)].san
+                    });
+                }
+            }).on('error', function(err) {
+                reject({
+                    error: err,
+                    move: moves[Math.floor(Math.random() * moves.length)].san
+                });
+            });
         });
     });
 };
 
-exports.move = function (board, doMove, fail) {
-    setTimeout(function() {
-        getEndgameMove(board, doMove, fail);
-    }, 1000);
+exports.move = function (board) {
+    return getEndgameMove(board);
 };
+
+/*
+// Some quick and dirty tests
+
+var chess = new Chess('2b1k3/8/8/8/8/8/2P5/1N2K3 b - - 0 1');
+getEndgameMove(chess.fen())
+    .then((move) => console.log(move))
+    .catch((err) => console.log(err));
+
+
+var chess = new Chess('2b1k3/3n4/8/8/8/8/2P5/1N2K3 b - - 0 1');
+getEndgameMove(chess.fen())
+    .then((move) => console.log(move))
+    .catch((err) => console.log(err));
+
+getEndgameMove('lolz-so-wrong')
+    .then((move) => console.log(move))
+    .catch((err) => console.log(err));
+*/
