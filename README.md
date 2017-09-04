@@ -7,6 +7,8 @@ A repository for easy chess-engine writing.
 Installation
 ------------
 
+_If you have trouble installing the player, or just simply don't want to bother with local installation, check out the [cheslie-player JSFiddle](https://jsfiddle.net/63gkjk9j/4/)_
+
 In order to use cheslie-player, you'll need [node.js](https://nodejs.org/en/). [Git](https://git-scm.com/) is nice too.
 
 Simply clone the cheslie-player repo, and install the dependencies by running the commands below.
