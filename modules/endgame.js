@@ -25,14 +25,14 @@ var getEndgameMove = function (board) {
                 var parsed = JSON.parse(body);
                 if (parsed.bestMove) {
                     var move = moves.find(function (move) {
-                        return parsed.bestMove === move.from + move.to;
+                        return parsed.bestMove.includes(move.from) && parsed.bestMove.includes(move.to);
                     });
                     if (move) {
                         resolve(move.san);
                     }
                 } else {
                     reject({
-                        error: err,
+                        error: 'Endgame failed to return a legal move',
                         move: moves[Math.floor(Math.random() * moves.length)].san
                     });
                 }
