@@ -3,6 +3,7 @@ var Chess = require('chess.js').Chess,
     black = require('../sample-players/rnd-jesus.js'),
     // black = require('../sample-players/endgamer.js'),
     // black = require('../sample-players/minmaxer.js'),
+    // black = require('../sample-players/decender.js'),
     chess = new Chess(),
 
     SUPPORT_UNICODE = true,

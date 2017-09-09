@@ -9,6 +9,6 @@ exports.move = function (board) {
         // This will return a promise
         return endgame.move(board);
     } else {
-    	return rndJesus.move(board);
+        return rndJesus.move(board);
     }
 };
