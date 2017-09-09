@@ -75,24 +75,6 @@ Black won by checkmate
 $>
 ```
 
-__Playing against other opponents__
-
-When you're confident that your player can beat any other ai out there, you can start the player, and join a public lobby with the command `npm start`.
-This will connect the player to a game and a lobby server, and should produce an output similar to the listing below.
-
-```
-$> npm start
-
-> NODE_ENV=production node player.js
-
-Player Tørrfisk - 635 is connected to game
-Player Tørrfisk - 635 is connected to lobby
-
-
-```
-
-When the player is running, you can visit the lobby at [cheslie-lobby.azurewebsites.net](https://cheslie-lobby.azurewebsites.net/) and start new games with other players.
-
 
 Chess.js and extentions
 -----------------------
