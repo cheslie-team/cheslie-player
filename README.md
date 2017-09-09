@@ -19,6 +19,11 @@ $> cd cheslie-player
 $> npm install
 ```
 
+Workshop wiki
+-------------
+
+The best place to get started with writing your own chess AI using cheslie-player is the [workshop wiki](https://github.com/cheslie-team/cheslie-player/wiki). Basic usage is shown below, but the wiki contains a lot more information, including a more detailed getting started guide.
+
 
 Usage
 -----
@@ -74,6 +79,24 @@ $> npm run play
 Black won by checkmate
 $>
 ```
+
+__Playing against other opponents__
+
+When you're confident that your player can beat any other ai out there, you can start the player and join the tournament server with the command `npm start`.
+This will connect the player to a game and the tournament server, and should produce an output similar to the listing below.
+
+```
+$> npm start
+
+> NODE_ENV=production node player.js
+
+Player Tørrfisk - 359 is connected to cheslie-tourney
+Player Tørrfisk - 359 is connected to cheslie-game
+
+
+```
+
+You can visit [cheslie-tourney.azurewebsites.net](http://cheslie-tourney.azurewebsites.net/) and to follow the tournament in progress.
 
 
 Chess.js and extentions
