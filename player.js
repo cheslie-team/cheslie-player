@@ -2,21 +2,21 @@ var config = require('cheslie-config'),
     io = require('socket.io-client'),
     ai = require('./ai.js'),
     game = io(config.game.url),
-    lobby = io(config.lobby.url),
+    tournament = io(config.tournament.url),
     name = ai.name;
 
-lobby.on('connect', function () {
-    console.log('Player ' + name + ' is connected to lobby');
-    lobby.emit('enter', name);
+tournament.on('connect', function () {
+    console.log('Player ' + name + ' is connected to ' + config.tournament.app.name);
+    tournament.emit('enter', name);
 });
 
-lobby.on('join', function (gameId) {
+tournament.on('join', function (gameId) {
     console.log('Player is joining game: ' + gameId);
     game.emit('join', gameId, name);
 });
 
 game.on('connect', function () {
-    console.log('Player ' + name + ' is connected to game');
+    console.log('Player ' + name + ' is connected to ' + config.game.app.name);
 });
 
 var emitMove = function (gameState, move) {
