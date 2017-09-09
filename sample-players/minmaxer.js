@@ -1,7 +1,7 @@
 var Chess = require('../modules/chess-extended.js').Chess,
     minmax = require('../modules/minmax.js');
 
-exports.move = function (board, doMove) {
+exports.move = function (board) {
     var depth = 2,
         score = function (chess) {
             // chess is a chess.js instance

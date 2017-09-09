@@ -1,7 +1,7 @@
 var Chess = require('../modules/chess-extended.js').Chess,
     deepening = require('../modules/deepening.js');
 
-exports.move = function (board, doMove) {
+exports.move = function (board) {
     var depth = 3,
         span = 6,
         score = function (chess) {
