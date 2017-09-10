@@ -5,7 +5,7 @@ var Chess = require('../modules/chess-extended.js').Chess,
 exports.move = function (board) {
     var chess = new Chess(board);
 
-    if (chess.number_of_pieces() <= 5) {
+    if (chess.numberOfPieces() <= 5) {
         // This will return a promise
         return endgame.move(board);
     } else {

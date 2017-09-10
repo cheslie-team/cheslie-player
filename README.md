@@ -7,7 +7,7 @@ A repository for easy chess-engine writing.
 Installation
 ------------
 
-_If you have trouble installing the player, or just simply don't want to bother with local installation, check out the [cheslie-player JSFiddle](https://jsfiddle.net/63gkjk9j/4/)_
+_If you have trouble installing the player, or just simply don't want to bother with local installation, check out the [cheslie-player JSFiddle](https://jsfiddle.net/63gkjk9j/5/)_
 
 In order to use cheslie-player, you'll need [node.js](https://nodejs.org/en/). [Git](https://git-scm.com/) is nice too.
 
@@ -111,7 +111,7 @@ __.pieces([optional: color])__
 
 Get all pieces on the current board. Accepts an optional color-argument that can be used to get just the white (`'w'`) or black (`'b'`) pieces.
 
-__.number_of_pieces([optional: color])__
+__.numberOfPieces([optional: color])__
 
 Get the number of pieces on the board. As for `.pieces()` an optional color argument is accepted.
 
@@ -119,12 +119,12 @@ Get the number of pieces on the board. As for `.pieces()` an optional color argu
 `/modules/chess-extended.js` contains all the extentions.
 
 
-__.moves_information()__
+__.movesInformation()__
 
-Get all available moves and information of what kind of move this is. Internally `.moves_information()` uses `.moves({ verbose: true })`, so se the chess.js documentation for more information.
+Get all available moves and information of what kind of move this is. Internally `.movesInformation()` uses `.moves({ verbose: true })`, so se the chess.js documentation for more information.
 
 ```
-.moves_information()
+.movesInformation()
 chess.moves({ verbose: true });
 // -> [{ color: 'w', from: 'a2', to: 'a3',
 //       flags: 'n', piece: 'p', san 'a3'

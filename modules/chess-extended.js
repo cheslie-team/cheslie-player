@@ -23,11 +23,11 @@ exports.Chess = function (fen) {
         });
     };
 
-    chess.number_of_pieces = function (color) {
+    chess.numberOfPieces = function (color) {
         return chess.pieces(color).length;
     };
 
-    chess.moves_information = function () {
+    chess.movesInformation = function () {
         return chess.moves({ verbose: true });
     };
 
