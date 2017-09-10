@@ -28,7 +28,7 @@ The best place to get started with writing your own chess AI using cheslie-playe
 Usage
 -----
 
-When you have installed cheslie-player, you'll probably want to write your own chess player.
+When you have installed cheslie-player, you'll probably want to write your own chess AI.
 The repo is set up so that all engine writing can be done in the `ai.js` file. If you just cloned the repo, it'll contain a sample player, making random moves.
 
 __Testing your player__
@@ -37,9 +37,9 @@ To run all unit tests use:
 
     npm test
 
+The unit tests won't do anything terribly interesting, but they'll check that your AI is capable of making leagal chess moves.
 
-You can test your chess player by runnin the command `npm run play` (or `npm run start-win`, if you're using windows). This will play a chess game where your player faces an opponent making random moves.
-All moves and positions are printed to the console as shown in the sample listing below.
+You can test your chess AI more extensively by runnin the command `npm run play` (or `npm run start-win`, if you're using windows). This will play a chess game where your AI faces an opponent making random moves. All moves and positions are printed to the console as shown in the sample listing below.
 
 ```
 $> npm run play
@@ -83,7 +83,7 @@ $>
 __Playing against other opponents__
 
 When you're confident that your player can beat any other ai out there, you can start the player and join the tournament server with the command `npm start`.
-This will connect the player to a game and the tournament server, and should produce an output similar to the listing below.
+This will connect your AI to a game and tournament server, and should produce an output similar to the listing below.
 
 ```
 $> npm start
@@ -109,11 +109,11 @@ In addition some extentions are prepared as part of cheslie-player:
 
 __.pieces([optional: color])__
 
-Get all pieces on the current board. Accepts an optional color-argument, that can be used to get just the white (`'w'`) or black (`'b'`) pieces.
+Get all pieces on the current board. Accepts an optional color-argument that can be used to get just the white (`'w'`) or black (`'b'`) pieces.
 
 __.number_of_pieces([optional: color])__
 
-Get the number of pieces on the board. As for `.pieces()` an otional color argument is accepted.
+Get the number of pieces on the board. As for `.pieces()` an optional color argument is accepted.
 
 
 `/modules/chess-extended.js` contains all the extentions.
@@ -121,7 +121,7 @@ Get the number of pieces on the board. As for `.pieces()` an otional color argum
 
 __.moves_informaton()__
 
-Get all available moves and information of what kind of move this is. Internally `.moves_information()` uses `.moves({ verbose: true })`, so se the chess.js documentation for more information as well.
+Get all available moves and information of what kind of move this is. Internally `.moves_information()` uses `.moves({ verbose: true })`, so se the chess.js documentation for more information.
 
 ```
 .moves_informaton()
@@ -148,7 +148,6 @@ The flags field in verbose mode may contain one or more of the following values:
 * 'q' - queenside castling
 
 A flag of 'pc' would mean that a pawn captured a piece on the 8th rank and promoted.
-
 
 
 Sample players and Modules
