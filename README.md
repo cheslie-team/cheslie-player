@@ -39,10 +39,10 @@ To run all unit tests use:
 
 The unit tests won't do anything terribly interesting, but they'll check that your AI is capable of making leagal chess moves.
 
-You can test your chess AI more extensively by runnin the command `npm run play` (or `npm run start-win`, if you're using windows). This will play a chess game where your AI faces an opponent making random moves. All moves and positions are printed to the console as shown in the sample listing below.
+You can test your chess AI more extensively by runnin the command `npm start`. This will play a chess game where your AI faces an opponent making random moves. All moves and positions are printed to the console as shown in the sample listing below.
 
 ```
-$> npm run play
+$> npm start
 
 > node scripts/play-random.js
 
@@ -82,11 +82,11 @@ $>
 
 __Playing against other opponents__
 
-When you're confident that your player can beat any other ai out there, you can start the player and join the tournament server with the command `npm start`.
+When you're confident that your player can beat any other ai out there, you can start the player and join the tournament server with the command `npm run tournament` (or `npm run tournament-win`, if you're using windows).
 This will connect your AI to a game and tournament server, and should produce an output similar to the listing below.
 
 ```
-$> npm start
+$> npm tournament
 
 > NODE_ENV=production node player.js
 
