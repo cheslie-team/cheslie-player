@@ -119,12 +119,12 @@ Get the number of pieces on the board. As for `.pieces()` an optional color argu
 `/modules/chess-extended.js` contains all the extentions.
 
 
-__.moves_informaton()__
+__.moves_information()__
 
 Get all available moves and information of what kind of move this is. Internally `.moves_information()` uses `.moves({ verbose: true })`, so se the chess.js documentation for more information.
 
 ```
-.moves_informaton()
+.moves_information()
 chess.moves({ verbose: true });
 // -> [{ color: 'w', from: 'a2', to: 'a3',
 //       flags: 'n', piece: 'p', san 'a3'

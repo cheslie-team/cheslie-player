@@ -27,7 +27,7 @@ exports.Chess = function (fen) {
         return chess.pieces(color).length;
     };
 
-    chess.moves_informaton = function () {
+    chess.moves_information = function () {
         return chess.moves({ verbose: true });
     };
 
