@@ -22,9 +22,15 @@ var exploreChildren = function (board, moves, depth, span, maximizing, score, v)
     return exploreChildren(board, moves, depth, span, maximizing, score, v);
 };
 
-var firstInteresting = function (moves, score, n) {
-    var interesting = moves.map(function (move) {
-            return {score: score(move), move: move};
+var firstInteresting = function (node, score, n) {
+    var interesting = node.moves()
+        .map(function (move) {
+            var c = new Chess(node.fen());
+            c.move(move);
+            return {chess: c, move: move};
+        })
+        .map(function (chessmove) {
+            return {score: score(chessmove.chess), move: chessmove.move};
         })
         .sort(function (a, b) {
             if (a.score < b.score) return -1;
@@ -46,7 +52,7 @@ var decent = function (fen, depth, span, maximizing, score, child) {
     var node = new Chess(fen),
         winning = { score: Number.POSITIVE_INFINITY, move: child },
         loosing = { score: Number.NEGATIVE_INFINITY, move: child };
-
+    
     if (child) {
         node.move(child);
     }
@@ -63,7 +69,7 @@ var decent = function (fen, depth, span, maximizing, score, child) {
         return { score: score(node), move: child };
     }
 
-    var interestingMoves = firstInteresting(node.moves(), score, span);
+    var interestingMoves = firstInteresting(node, score, span);
     var v = exploreChildren(node.fen(), interestingMoves, depth, span, maximizing, score, maximizing ? loosing : winning);
     
     return { score: v.score, move: child ? child : v.move };
