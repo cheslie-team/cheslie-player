@@ -15,6 +15,10 @@ tournament.on('join', function (gameId) {
     game.emit('join', gameId, name);
 });
 
+tournament.on('disconnect', function () {
+    tournament.connect();
+});
+
 game.on('connect', function () {
     console.log('Player ' + name + ' is connected to ' + config.game.app.name);
 });
@@ -36,4 +40,8 @@ game.on('move', function (gameState) {
             emitMove(gameState, err.move);
         });        
     }
+});
+
+game.on('disconnect', function () {
+    game.connect();
 });
