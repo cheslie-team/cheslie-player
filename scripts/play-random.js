@@ -1,4 +1,4 @@
-var Chess = require('chess.js').Chess,
+var Chess = require('../modules/chess-extended.js').Chess;
     white = require('../ai.js'),
     black = require('../sample-players/rnd-jesus.js'),
     // black = require('../sample-players/endgamer.js'),
