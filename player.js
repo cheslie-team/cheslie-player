@@ -38,10 +38,13 @@ game.on('move', function (gameState) {
         }).catch(function (err) {
             console.log(err.error);
             emitMove(gameState, err.move);
-        });        
+        });
     }
 });
 
 game.on('disconnect', function () {
     game.connect();
+});
+tournament.on('disconnect', function () {
+    tournament.connect();
 });
