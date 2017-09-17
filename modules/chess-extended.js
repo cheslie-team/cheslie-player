@@ -1,11 +1,14 @@
-var Chess = require('chess.js').Chess;
+var Chess = require('chess.js');
+if (typeof window === 'undefined') {
+    Chess = Chess.Chess;
+}
 
 exports.Chess = function (fen) {
     var chess = new Chess(fen),
         numberOfMoves = 0,
         _move = chess.move,
         _game_over = chess.game_over;
-    
+
     chess.pieces = function (color) {
         var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'],
             squares = [];

@@ -1,5 +1,5 @@
 var should = require('chai').should(),
-    Chess = require('chess.js').Chess,
+    Chess = require('../modules/chess-extended.js').Chess,
     ai = require('./../ai.js');
 
 describe('When the ai is asked to generate å move', () => {

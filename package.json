@@ -8,7 +8,8 @@
     "test": "mocha test",
     "tournament": "NODE_ENV=production node player.js",
     "tournament-win": "set NODE_ENV=production& node player.js",
-    "dev": "node player.js"
+    "dev": "node player.js",
+    "dev-browser": "webpack-dev-server --open"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,14 @@
     "chai": "^3.5.0",
     "cheslie-config": "^1.1.*",
     "chess.js": "^0.10.2",
+    "jquery": "^3.2.1",
     "mocha": "^3.2.0",
     "socket.io-client": "^1.7.3"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^0.1.16",
+    "html-webpack-plugin": "^2.30.1",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.8.2"
   }
 }

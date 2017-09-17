@@ -1,4 +1,4 @@
-var Chess = require('chess.js').Chess,
+var Chess = require('./chess-extended.js').Chess;
     https = require('https'),
     querystring = require('querystring');
 
