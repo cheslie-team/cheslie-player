@@ -5,46 +5,53 @@ var config = require('cheslie-config'),
     tournament = io(config.tournament.url),
     name = ai.name;
 
-tournament.on('connect', function () {
-    console.log('Player ' + name + ' is connected to ' + config.tournament.app.name);
-    tournament.emit('enter', name);
-});
-
-tournament.on('join', function (gameId) {
+tournament.joinGame = (gameId) => {
     console.log('Player is joining game: ' + gameId);
-    game.emit('join', gameId, name);
-});
+    if (game.connected) {
+        game.emit('join', gameId, name);
+    } else {
+        tournament.emit('leave');
+        game.connect();
+    }
+}
 
-tournament.on('disconnect', function () {
-    tournament.connect();
-});
+tournament
+    .on('connect', () => {
+        console.log('Player ' + name + ' is connected to ' + config.tournament.app.name);
+        tournament.emit('enter', name);
+    })
+    .on('reconnect', () => {
+        if (game.connected) {
+            tournament.emit('enter', name);
+        }
+    })
+    .on('join', tournament.joinGame);
 
-game.on('connect', function () {
-    console.log('Player ' + name + ' is connected to ' + config.game.app.name);
-});
-
-var emitMove = function (gameState, move) {
+game.emitMove = (gameState, move) => {
     gameState.move = move;
     game.emit('move', gameState);
 };
-
-game.on('move', function (gameState) {
+game.doMove = (gameState) => {
     var move = ai.move(gameState.board);
     if (typeof move === "string") {
-        emitMove(gameState, move);
+        game.emitMove(gameState, move);
     } else {
-        move.then(function (move) {
-            emitMove(gameState, move);
-        }).catch(function (err) {
+        move.then(move => {
+            game.emitMove(gameState, move);
+        }).catch(err => {
             console.log(err.error);
-            emitMove(gameState, err.move);
+            game.emitMove(gameState, err.move);
         });
     }
-});
+}
 
-game.on('disconnect', function () {
-    game.connect();
-});
-tournament.on('disconnect', function () {
-    tournament.connect();
-});
+game
+    .on('connect', () => {
+        if (tournament.connected) tournament.emit('enter', name);
+        console.log('Player ' + name + ' is connected to ' + config.game.app.name);
+    })
+    .on('move', game.doMove)
+    .on('disconnect', () => {
+        tournament.emit('leave');
+        game.connect();
+    });
