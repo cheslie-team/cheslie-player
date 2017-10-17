@@ -80,6 +80,8 @@ Black won by checkmate
 $>
 ```
 
+If you're running locally, you can also try out the command `npm run dev-browser` to get a visualization of your AI playing a game in the browser.
+
 __Playing against other opponents__
 
 When you're confident that your player can beat any other ai out there, you can start the player and join the tournament server with the command `npm run tournament` (or `npm run tournament-win`, if you're using windows).
