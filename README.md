@@ -88,7 +88,7 @@ When you're confident that your player can beat any other ai out there, you can 
 This will connect your AI to a game and tournament server, and should produce an output similar to the listing below.
 
 ```
-$> npm tournament
+$> npm run tournament
 
 > NODE_ENV=production node player.js
 
