@@ -1,27 +1,34 @@
 var Chess = require('./chess-extended.js').Chess;
-    https = require('https'),
+https = require('https'),
     querystring = require('querystring');
 
 var getEndgameMove = function (board) {
-    var query = querystring.stringify({fen: board}),
+    var query = querystring.stringify({
+            fen: board
+        }),
         path = '/v1/syzygy?' + query,
-        moves = new Chess(board).moves({verbose: true});
+        moves = new Chess(board).moves({
+            verbose: true
+        });
 
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
         https.get({
             host: 'cheslie-endgame.azurewebsites.net',
             path: path
-        }, function(response) {
+        }, function (response) {
             if (response.statusCode < 200 || response.statusCode > 299) {
-                reject(new Error('Failed to load page, status code: ' + response.statusCode));
+                return reject({
+                    error: 'Failed to load page, status code: ' + response.statusCode,
+                    move: moves[Math.floor(Math.random() * moves.length)].san
+                })
             }
 
             var body = '';
-            response.on('data', function(data) {
+            response.on('data', function (data) {
                 body += data;
             });
 
-            response.on('end', function() {
+            response.on('end', function () {
                 var parsed = JSON.parse(body);
                 if (parsed.bestMove) {
                     var move = moves.find(function (move) {
@@ -36,7 +43,7 @@ var getEndgameMove = function (board) {
                         move: moves[Math.floor(Math.random() * moves.length)].san
                     });
                 }
-            }).on('error', function(err) {
+            }).on('error', function (err) {
                 reject({
                     error: err,
                     move: moves[Math.floor(Math.random() * moves.length)].san
