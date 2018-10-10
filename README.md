@@ -39,7 +39,7 @@ To run all unit tests use:
 
 The unit tests won't do anything terribly interesting, but they'll check that your AI is capable of making leagal chess moves.
 
-You can test your chess AI more extensively by runnin the command `npm start`. This will play a chess game where your AI faces an opponent making random moves. All moves and positions are printed to the console as shown in the sample listing below.
+You can test your chess AI more extensively by running the command `npm start`. This will play a chess game where your AI faces an opponent making random moves. All moves and positions are printed to the console as shown in the sample listing below.
 
 ```
 $> npm start
@@ -60,7 +60,7 @@ $> npm start
 
  ♔ = White, ♚ = Black
 
-[A lot of frames is omitted here]
+[A lot of frames are omitted here]
 
  ♔ = White, ♚ = Black
    +------------------------+
@@ -84,7 +84,7 @@ If you're running locally, you can also try out the command `npm run dev-browser
 
 __Playing against other opponents__
 
-When you're confident that your player can beat any other ai out there, you can start the player and join the tournament server with the command `npm run tournament` (or `npm run tournament-win`, if you're using windows).
+When you're confident that your player can beat any other AI out there, you can start the player and join the tournament server with the command `npm run tournament` (or `npm run tournament-win`, if you're using windows).
 This will connect your AI to a game and tournament server, and should produce an output similar to the listing below.
 
 ```
@@ -98,16 +98,16 @@ Player Tørrfisk - 359 is connected to cheslie-game
 
 ```
 
-You can visit [cheslie-tourney.azurewebsites.net](http://cheslie-tourney.azurewebsites.net/) and to follow the tournament in progress.
+You can visit [cheslie-tourney.azurewebsites.net](http://cheslie-tourney.azurewebsites.net/) to follow the tournament in progress.
 
 
-Chess.js and extentions
+Chess.js and extensions
 -----------------------
 
 It is reccomended to use [chess.js](https://github.com/jhlywa/chess.js) to get available moves and to support position evaluation.
 Have a look at the chess.js readme for more information about what chess.js can do.
 
-In addition some extentions are prepared as part of cheslie-player:
+In addition some extentions have been prepared as part of cheslie-player:
 
 __.pieces([optional: color])__
 
@@ -115,7 +115,7 @@ Get all pieces on the current board. Accepts an optional color-argument that can
 
 __.numberOfPieces([optional: color])__
 
-Get the number of pieces on the board. As for `.pieces()` an optional color argument is accepted.
+Get the number of pieces on the board. Like `.pieces()`, an optional color argument is accepted.
 
 
 `/modules/chess-extended.js` contains all the extentions.
@@ -123,7 +123,7 @@ Get the number of pieces on the board. As for `.pieces()` an optional color argu
 
 __.movesInformation()__
 
-Get all available moves and information of what kind of move this is. Internally `.movesInformation()` uses `.moves({ verbose: true })`, so se the chess.js documentation for more information.
+Get all available moves and information of what kind of move this is. Internally `.movesInformation()` uses `.moves({ verbose: true })`, so see the chess.js documentation for more information.
 
 ```
 .movesInformation()
